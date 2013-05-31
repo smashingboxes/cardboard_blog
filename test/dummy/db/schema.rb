@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517194140) do
+ActiveRecord::Schema.define(:version => 20130531193426) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(:version => 20130517194140) do
   end
 
   add_index "cardboard_blog_posts", ["user_id"], :name => "index_cardboard_blog_posts_on_user_id"
+
+  create_table "cardboard_categories_posts", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "post_id"
+  end
+
+  add_index "cardboard_categories_posts", ["category_id", "post_id"], :name => "index_cardboard_categories_posts_on_category_id_and_post_id"
+  add_index "cardboard_categories_posts", ["post_id", "category_id"], :name => "index_cardboard_categories_posts_on_post_id_and_category_id"
 
   create_table "cardboard_fields", :force => true do |t|
     t.string   "identifier"
@@ -121,13 +129,5 @@ ActiveRecord::Schema.define(:version => 20130517194140) do
   end
 
   add_index "cardboard_settings", ["name"], :name => "index_cardboard_settings_on_name"
-
-  create_table "categories_posts", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "post_id"
-  end
-
-  add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
-  add_index "categories_posts", ["post_id", "category_id"], :name => "index_categories_posts_on_post_id_and_category_id"
 
 end
