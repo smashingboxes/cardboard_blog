@@ -1,7 +1,5 @@
 module Cardboard
-  class Image < ActiveRecord::Base
-    self.table_name = 'cardboard_blog_images'
-    belongs_to :post
-    attr_accessible :caption, :file_name, :file_uid
+  class BlogImage < ActiveRecord::Base
+    belongs_to :post, class_name: "BlogPost"
   end
 end

@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :cardboard-blog do
+# task :cardboard_blog do
 #   # Task goes here
 # end

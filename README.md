@@ -1,11 +1,11 @@
-# Cardboard-Blog
+# Cardboard Blog
 
 ## Usage
 
 ```ruby
 #Gemfile
-gem 'cardboard-cms', git: 'git@github.com:smashingboxes/cardboard.git', require: 'cardboard'
-gem 'cardboard-blog', git: 'git@github.com:smashingboxes/cardboard-blog.git'
+gem 'cardboard_cms', git: 'git@github.com:smashingboxes/cardboard.git'
+gem 'cardboard_blog', git: 'git@github.com:smashingboxes/cardboard-blog.git'
 
 ```
 
