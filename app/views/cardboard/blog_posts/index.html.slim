@@ -1,0 +1,18 @@
+= cardboard_filters Cardboard::Blog::Post, :title, new_button:{url: new_cardboard_blog_post_path}
+
+table class="table table-striped"
+  tr
+    - for field in @blog_posts.columns
+      th= sort_link @q, field.name
+    th
+    th
+
+  - @blog_posts.each do |post|
+    tr
+      - for field in post.attributes.keys
+        td = post.attributes[field]
+
+      td = link_to 'Edit', edit_cardboard_blog_post_path(post)
+      td = link_to 'Destroy', cardboard_blog_post_path(post), :confirm => 'Are you sure?', :method => :delete
+
+= paginate @blog_posts

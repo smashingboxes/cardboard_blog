@@ -1,0 +1,6 @@
+h1 Editing post
+
+= simple_form_for @blog_post, url: cardboard_blog_post_path(@blog_post) do |f|
+  == render 'fields', f: f
+
+= link_to 'Back', cardboard_blog_posts_path
