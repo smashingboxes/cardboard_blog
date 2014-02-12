@@ -1,7 +1,9 @@
 
 = f.input :title
 = f.input :summary
-= f.input :body
+= f.input :body, :"data-no-turbolink" => true do
+  = f.input_field :body, as: defined?(CardboardRedactor) ? :redactor : :rich_text
 
 
 = f.button :submit
+

@@ -8,7 +8,7 @@ class CreateCardboardBlogPosts < ActiveRecord::Migration
       t.integer :visits
       t.datetime :published_at
       t.integer :user_id
-
+      t.string :image_uid
       t.timestamps
     end
     add_index :cardboard_blog_posts, :user_id
@@ -16,20 +16,7 @@ class CreateCardboardBlogPosts < ActiveRecord::Migration
     #Categories
     create_table :cardboard_blog_categories do |t|
       t.string :name
-
-      t.timestamps
     end
-
-    # Images
-    create_table :cardboard_blog_images do |t|
-      t.string :file_uid
-      t.string :file_name
-      t.string :caption
-      t.references :post
-
-      t.timestamps
-    end
-    add_index :cardboard_blog_images, :post_id
 
     # Relational table
     create_table :cardboard_categories_posts, id: false do |t|

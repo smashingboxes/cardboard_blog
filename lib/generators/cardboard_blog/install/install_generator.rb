@@ -8,6 +8,7 @@ module CardboardBlog
         puts "Copying over migrations..."
         Dir.chdir(Rails.root) do
           `rake cardboard:install:migrations`
+          # `rake cardboard_redactor:install:migrations`
           `rake cardboard_blog:install:migrations`
         end
       end
