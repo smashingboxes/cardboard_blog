@@ -13,6 +13,6 @@ table class="table table-striped"
         td = post.attributes[field]
 
       td = link_to 'Edit', edit_cardboard_blog_post_path(post)
-      td = link_to 'Destroy', cardboard_blog_post_path(post), :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Destroy', cardboard_blog_post_path(post), data: {confirm: 'Are you sure?'}, :method => :delete
 
 = paginate @blog_posts

@@ -1,3 +1,4 @@
+# This migration comes from cardboard_blog (originally 1)
 class CreateCardboardBlogPosts < ActiveRecord::Migration
   def change
     # Posts

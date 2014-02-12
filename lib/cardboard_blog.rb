@@ -2,6 +2,7 @@ require "cardboard_blog/engine"
 
 module CardboardBlog
   class Railtie < ::Rails::Railtie
+    
     config.after_initialize do
       # Add load paths straight to I18n, so engines and application can overwrite it.
       # require 'active_support/i18n'

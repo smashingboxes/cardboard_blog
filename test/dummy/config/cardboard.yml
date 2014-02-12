@@ -1,17 +1,19 @@
 # # Page and Settings admin forms
 # # Example
-# pages:
-#   home:
-#     title: Welcome
-#     parts:
-#       intro:
-#         fields:
-#           text1:
-#             type: string
-#           text2:
-#             type: string
-#           show_slideshow:
-#             type: boolean
+pages:
+  home:
+    title: Welcome
+    parts:
+      intro:
+        fields:
+          text1:
+            type: string
+          text2:
+            type: string
+          show_slideshow:
+            type: boolean
+          testing:
+            type: rich_text
 #       slideshow:
 #         repeatable: true
 #         fields:
