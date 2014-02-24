@@ -15,5 +15,19 @@ rake db:migrate
 
 ```
 
+### Statistics
+We provide hooks for `impressionist` gem
+```
+rails g impressionist
+rake db:migrate
+```
+Then in your blog controller
+```ruby
+def show
+  @post = Cardboard::Blog::Post.find(params[:id])
+  impressionist(@post)
+end
+```
+
 
 This project rocks and uses MIT-LICENSE.

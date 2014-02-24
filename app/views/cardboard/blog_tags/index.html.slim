@@ -1,0 +1,20 @@
+= cardboard_filters Cardboard::Blog::Tag, :name, new_button:{url: new_cardboard_blog_tag_path}
+
+table class="table table-striped"
+  tr
+    th= sort_link @q, :id
+    th= sort_link @q, :name
+    
+    th Actions
+
+  - @blog_tags.each do |cardboard_blog_tag|
+    tr
+      td = cardboard_blog_tag.id
+      td = cardboard_blog_tag.name
+      
+      td
+        = link_to 'Edit', edit_cardboard_blog_tag_path(cardboard_blog_tag)
+        = " | "
+        = link_to 'Delete', cardboard_blog_tag_path(cardboard_blog_tag), data: { confirm: 'Are you sure?'}, :method => :delete
+
+= paginate @blog_tags

@@ -1,9 +1,11 @@
-
+= f.hidden_field :user_id, :value => cardboard_user.id
 = f.input :title
 = f.input :summary
 = f.input :body, :"data-no-turbolink" => true do
   = f.input_field :body, as: defined?(CardboardRedactor) ? :redactor : :rich_text
 
+/ = f.association :category
+= f.input :tag_list, input_html: {"data-search-select" => true, :multiple => true, style: "width: 100%;"}, as: :select, collection: Cardboard::Blog::Tag.pluck(:name), label: "Tags"
 
 = f.button :submit
 

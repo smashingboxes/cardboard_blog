@@ -1,3 +1,4 @@
+# This migration comes from cardboard_blog (originally 1)
 class CreateCardboardBlogPosts < ActiveRecord::Migration
   def change
     # Posts
@@ -5,7 +6,7 @@ class CreateCardboardBlogPosts < ActiveRecord::Migration
       t.string :title
       t.text :summary
       t.text :body
-      t.integer :visits, :default => 0
+      t.integer :visits
       t.datetime :published_at
       t.integer :user_id, index: true
       t.integer :category_id, index: true

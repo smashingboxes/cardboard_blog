@@ -8,7 +8,7 @@ module CardboardBlog
       # require 'active_support/i18n'
       # I18n.load_path.unshift *Dir[File.expand_path('../cardboard_blog/locales/*.yml', __FILE__)]
 
-      Cardboard.resource_controllers |= [Cardboard::BlogPostsController]
+      Cardboard.resource_controllers |= [Cardboard::BlogPostsController, Cardboard::BlogTagsController]
     end
   end
 end

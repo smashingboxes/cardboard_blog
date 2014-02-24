@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211184841) do
+ActiveRecord::Schema.define(version: 20140222200422) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -37,17 +37,6 @@ ActiveRecord::Schema.define(version: 20140211184841) do
     t.datetime "updated_at"
   end
 
-  create_table "cardboard_blog_images", force: true do |t|
-    t.string   "file_uid"
-    t.string   "file_name"
-    t.string   "caption"
-    t.integer  "post_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "cardboard_blog_images", ["post_id"], name: "index_cardboard_blog_images_on_post_id"
-
   create_table "cardboard_blog_posts", force: true do |t|
     t.string   "title"
     t.text     "summary"
@@ -55,19 +44,15 @@ ActiveRecord::Schema.define(version: 20140211184841) do
     t.integer  "visits"
     t.datetime "published_at"
     t.integer  "user_id"
+    t.integer  "category_id"
+    t.string   "image_uid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "cardboard_blog_posts", ["user_id"], name: "index_cardboard_blog_posts_on_user_id"
-
-  create_table "cardboard_categories_posts", id: false, force: true do |t|
-    t.integer "category_id"
-    t.integer "post_id"
+  create_table "cardboard_blog_tags", force: true do |t|
+    t.string "name"
   end
-
-  add_index "cardboard_categories_posts", ["category_id", "post_id"], name: "index_cardboard_categories_posts_on_category_id_and_post_id"
-  add_index "cardboard_categories_posts", ["post_id", "category_id"], name: "index_cardboard_categories_posts_on_post_id_and_category_id"
 
   create_table "cardboard_fields", force: true do |t|
     t.string   "identifier"
@@ -123,8 +108,26 @@ ActiveRecord::Schema.define(version: 20140211184841) do
     t.string   "name"
     t.text     "fields"
     t.string   "identifier"
+    t.boolean  "is_page"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", force: true do |t|
+    t.string "name"
   end
 
 end

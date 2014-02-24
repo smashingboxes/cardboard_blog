@@ -1,4 +1,7 @@
-h1 Editing post
+h1 
+  | Editing post
+  small
+    = link_to 'Destroy', cardboard_blog_post_path(@blog_post), data: {confirm: 'Are you sure?'}, :method => :delete
 
 = simple_form_for @blog_post, url: cardboard_blog_post_path(@blog_post) do |f|
   == render 'fields', f: f

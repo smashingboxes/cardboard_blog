@@ -1,18 +1,68 @@
+- content_for :head do
+  scss:
+    $blog_labels_width: 150px;
+    .post{
+      margin: 0px ($blog_labels_width + 80px) 10px 0px;
+      border: 1px #CCC solid;
+      padding: 10px 10px 0px
+    }
+    .blog_label_sort .label a{
+      text-decoration: none;
+      color: #FFF;
+    }
+    .blog_labels{
+      float: right;
+      width: $blog_labels_width;
+    }
+
 = cardboard_filters Cardboard::Blog::Post, :title, new_button:{url: new_cardboard_blog_post_path}
 
-table class="table table-striped"
-  tr
-    - for field in @blog_posts.columns
-      th= sort_link @q, field.name
-    th
-    th
+.blog_label_sort
+  .label= sort_link @q, :title
+  .label= sort_link @q, :visits
+  .label= sort_link @q, :updated_at
+
+
+div style="margin-top: 10px;"
+  .blog_labels.well
+    p
+      b Labels
+
+    ul.tags.nav.nav-pills.nav-stacked style="margin: 0px;"
+      - for tag in Cardboard::Blog::Tag.all
+        - if  current_page?(link = params.merge(q: {tags_name_eq: tag.name}))
+          li class="active" = link_to tag.name, {}
+        - else
+          li = link_to tag.name, link
+          
+    / br
+    / = simple_form_for Cardboard::Blog::Tag.new, url: cardboard_blog_tags_path, style:"margin:0px", remote: true, method: :post do |f|
+    /   .input-append
+    /     = f.input_field :name, placeholder: "New Tag", style:"width: 120px;"
+    /     = f.submit "+", class: "btn"
+    hr 
+    = link_to "Manage All Tags", cardboard_blog_tags_path, class: "btn"
+
 
   - @blog_posts.each do |post|
-    tr
-      - for field in post.attributes.keys
-        td = post.attributes[field]
+    .post 
+      p
+        => link_to post.title, edit_cardboard_blog_post_path(post)
+        small
+          | (#{post.visits || 0})
 
-      td = link_to 'Edit', edit_cardboard_blog_post_path(post)
-      td = link_to 'Destroy', cardboard_blog_post_path(post), data: {confirm: 'Are you sure?'}, :method => :delete
+      p
+        .right
+          b Last updated: 
+          =<> l post.updated_at, format: :short
+        b Author:
+        =<> post.author_name
+
+
+          
+
+
+
+
 
 = paginate @blog_posts

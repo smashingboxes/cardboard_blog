@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency 'impressionist'
-  s.add_dependency "cardboard_cms", "~> 0.1"
+  s.add_dependency 'cardboard_cms', "~> 0.2.0"
+  s.add_dependency 'acts-as-taggable-on'
   
   s.add_development_dependency 'sqlite3'
 end
