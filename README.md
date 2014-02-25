@@ -12,7 +12,11 @@ gem 'cardboard_blog', git: 'git@github.com:smashingboxes/cardboard_blog.git'
 ```bash
 rake cardboard_blog:install:migrations
 rake db:migrate
+```
 
+Then in your `cardboard.css.scss` add
+```css
+@import "cardboard/blog";
 ```
 
 ### Statistics

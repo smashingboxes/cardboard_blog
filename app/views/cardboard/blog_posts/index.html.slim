@@ -1,20 +1,3 @@
-- content_for :head do
-  scss:
-    $blog_labels_width: 150px;
-    .post{
-      margin: 0px ($blog_labels_width + 80px) 10px 0px;
-      border: 1px #CCC solid;
-      padding: 10px 10px 0px
-    }
-    .blog_label_sort .label a{
-      text-decoration: none;
-      color: #FFF;
-    }
-    .blog_labels{
-      float: right;
-      width: $blog_labels_width;
-    }
-
 = cardboard_filters Cardboard::Blog::Post, :title, new_button:{url: new_cardboard_blog_post_path}
 
 .blog_label_sort
