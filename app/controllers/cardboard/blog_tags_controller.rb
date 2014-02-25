@@ -6,5 +6,5 @@ class Cardboard::BlogTagsController < Cardboard::ResourceController
   menu false
   actions :all, except: [:show]
 
-  respond_to :js, :html
+  # respond_to :js, :html
 end

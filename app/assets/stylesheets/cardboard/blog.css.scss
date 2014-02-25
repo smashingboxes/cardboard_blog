@@ -1,12 +1,16 @@
-$blog_labels_width: 150px;
+$blog_labels_width: 150px !default;
 .post{
   margin: 0px ($blog_labels_width + 80px) 10px 0px;
   border: 1px #CCC solid;
   padding: 10px 10px 0px
 }
-.blog_label_sort .label a{
-  text-decoration: none;
-  color: #FFF;
+.blog_label_sort .label{
+  margin-right: 3px;
+  a{
+    padding: 2px;
+    text-decoration: none;
+    color: #FFF;
+  }
 }
 .blog_labels{
   float: right;

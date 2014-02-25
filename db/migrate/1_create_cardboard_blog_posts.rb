@@ -10,6 +10,7 @@ class CreateCardboardBlogPosts < ActiveRecord::Migration
       t.integer :user_id, index: true
       t.integer :category_id, index: true
       t.string :image_uid
+      t.string :slug
       t.timestamps
     end
 

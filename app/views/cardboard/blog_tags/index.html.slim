@@ -12,7 +12,7 @@ table class="table table-striped"
       td = cardboard_blog_tag.id
       td = cardboard_blog_tag.name
       
-      td
+      td style="width:80px;"
         = link_to 'Edit', edit_cardboard_blog_tag_path(cardboard_blog_tag)
         = " | "
         = link_to 'Delete', cardboard_blog_tag_path(cardboard_blog_tag), data: { confirm: 'Are you sure?'}, :method => :delete

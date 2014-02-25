@@ -1,5 +1,6 @@
 = f.hidden_field :user_id, :value => cardboard_user.id
 = f.input :title
+= f.input :slug, hint: "Hint: keyword effectiveness in URLs decrease as URL length and keyword position increases.", label: "URL slug"
 = f.input :summary
 = f.input :body, :"data-no-turbolink" => true do
   = f.input_field :body, as: defined?(CardboardRedactor) ? :redactor : :rich_text
