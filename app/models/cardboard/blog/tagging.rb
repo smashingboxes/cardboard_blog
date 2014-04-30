@@ -3,7 +3,7 @@ module Cardboard
     class Tagging < ActiveRecord::Base
       self.table_name = 'cardboard_blog_taggings'
       belongs_to :tag
-      belongs_to :article
+      belongs_to :post
     end
   end
 end
