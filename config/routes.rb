@@ -13,7 +13,7 @@ Rails.application.routes.named_routes.module.module_eval do
   end
 
   def blog_tag_path(identifier, options = {})
-    url = identifier.try(:slug)
+    url = identifier.try(:url)
     options.present? && url ? "#{url}?#{options.to_query}" : url
   end
 
