@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'impressionist'
   s.add_dependency 'cardboard_cms', "~> 0.2.0"
-  s.add_dependency 'acts-as-taggable-on'
-  
+  s.add_dependency 'simple_dragonfly_preview', ">= 0.0.3"
+
   s.add_development_dependency 'sqlite3'
 end

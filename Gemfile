@@ -16,6 +16,7 @@ gem "jquery-rails"
 gem 'devise', '>= 3.0.0'
 
 gem 'cardboard_cms', path: "/Users/michaelelfassy/Development/cardboard" 
+gem 'simple_dragonfly_preview', path: "/Users/michaelelfassy/Development/simple_dragonfly_preview" 
 
 gem "thin"
 # gem 'rack-mini-profiler'

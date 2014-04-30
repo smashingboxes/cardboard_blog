@@ -18,11 +18,7 @@ div style="margin-top: 10px;"
         - else
           li = link_to tag.name, link
           
-    / br
-    / = simple_form_for Cardboard::Blog::Tag.new, url: cardboard_blog_tags_path, style:"margin:0px", remote: true, method: :post do |f|
-    /   .input-append
-    /     = f.input_field :name, placeholder: "New Tag", style:"width: 120px;"
-    /     = f.submit "+", class: "btn"
+
     hr 
     = link_to "Manage All Tags", cardboard_blog_tags_path, class: "btn"
 
@@ -30,6 +26,8 @@ div style="margin-top: 10px;"
   - @blog_posts.each do |post|
     .post 
       p
+        .right
+          = link_to "Preview", main_app.blog_post_path(post)
         => link_to post.title, edit_cardboard_blog_post_path(post)
         small
           | (#{post.visits || 0})

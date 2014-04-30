@@ -1,6 +1,6 @@
 require 'cardboard_cms'
-require 'acts-as-taggable-on'
 require 'impressionist'
+require 'simple_dragonfly_preview'
 
 module CardboardBlog
   class Engine < ::Rails::Engine
