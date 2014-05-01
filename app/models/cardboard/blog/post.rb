@@ -7,6 +7,9 @@ module Cardboard
       has_many :taggings
       has_many :tags, through: :taggings
 
+      scope :draft, ->{where("published_at IS NULL")}
+      scope :published, ->{where("published_at IS NOT NULL")}
+
       include UrlConcern
 
       # Gem initialization
@@ -29,22 +32,6 @@ module Cardboard
             joins(:taggings).
             group("taggings.tag_id")
       end
-      
-      def tag_list
-        tags.map(&:name).join(", ")
-      end
-      
-      def tag_list=(names)
-        names = names.split(",") if names.is_a?(String)
-        all_tags = names.inject([]) do |array, n|
-          if n.blank?
-            array
-          else
-            array << Tag.where(name: n.strip).first_or_create! 
-          end
-        end
-        self.tags = all_tags if all_tags
-      end
 
       #overwritten setters/getters
       def author
@@ -56,6 +43,15 @@ module Cardboard
         self.author.try(:name) || user_name || self.author.try(:email)
       end
 
+      def published?
+        return false unless published_at
+        published_at <= DateTime.now
+      end
+
+      def draft?
+        !published?
+      end
+
       def to_params
         "#{id}-#{slug}"
       end
@@ -65,7 +61,7 @@ module Cardboard
       def set_defaults
         self.slug ||= title
         self.path = "/"
-        self.meta_tags = meta_tags.reverse_merge("title" => title)
+        self.meta_tags = meta_tags.reverse_merge("title" => title, "description" => summary)
       end
     end
   end

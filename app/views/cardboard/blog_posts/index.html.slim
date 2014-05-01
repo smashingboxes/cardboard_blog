@@ -1,9 +1,9 @@
 = cardboard_filters Cardboard::Blog::Post, :title, new_button:{url: new_cardboard_blog_post_path}
 
 .blog_label_sort
-  .label= sort_link @q, :title
-  .label= sort_link @q, :visits
-  .label= sort_link @q, :updated_at
+  .label.badge-inverse= sort_link @q, :title
+  .label.badge-inverse= sort_link @q, :visits
+  .label.badge-inverse= sort_link @q, :updated_at
 
 
 div style="margin-top: 10px;"
@@ -27,22 +27,26 @@ div style="margin-top: 10px;"
     .post 
       p
         .right
-          = link_to "Preview", main_app.blog_post_path(post)
-        => link_to post.title, edit_cardboard_blog_post_path(post)
+          = link_to "Edit", edit_cardboard_blog_post_path(post), class: "btn"
+        =<> link_to post.title, main_app.blog_post_path(post)
         small
-          | (#{post.visits || 0})
-
+          - if post.draft?
+            .label Draft 
+          - else
+            .label.label-info Published
+          / | (#{post.visits || 0})
+        
       p
-        .right
+        span style="margin-right:20px"
+          b Author:
+          =<> post.author_name
+        span style="margin-right:20px"
           b Last updated: 
           =<> l post.updated_at, format: :short
-        b Author:
-        =<> post.author_name
-
-
-          
-
-
+        - if post.published?
+          span style="margin-right:20px"
+            b Published: 
+            =<> l post.published_at, format: :short
 
 
 
