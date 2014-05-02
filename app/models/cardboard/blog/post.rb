@@ -52,6 +52,11 @@ module Cardboard
         !published?
       end
 
+      def thumbnail(size)
+        return unless image_uid
+        image.thumb(size).url
+      end
+
       def to_params
         "#{id}-#{slug}"
       end

@@ -1,4 +1,7 @@
-Cardboard::Engine.routes.draw do
+Rails.application.routes.draw do
+  scope  :constraints => Cardboard::BlogConstraint do 
+    get "*id", to: "blog#router"
+  end
 end
 
 Rails.application.routes.named_routes.module.module_eval do
