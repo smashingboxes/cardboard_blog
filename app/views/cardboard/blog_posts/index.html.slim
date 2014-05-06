@@ -4,6 +4,7 @@
   .label.badge-inverse= sort_link @q, :title
   .label.badge-inverse= sort_link @q, :visits
   .label.badge-inverse= sort_link @q, :updated_at
+  .label.badge-inverse= sort_link @q, :published_at
 
 
 div style="margin-top: 10px;"
@@ -23,7 +24,7 @@ div style="margin-top: 10px;"
     = link_to "Manage All Tags", cardboard_blog_tags_path, class: "btn"
 
 
-  - @blog_posts.each do |post|
+  - @blog_posts.includes(:url_object).each do |post|
     .post 
       p
         .right
