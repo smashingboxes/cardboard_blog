@@ -3,7 +3,7 @@ module Cardboard
     class Post < ActiveRecord::Base
       self.table_name = 'cardboard_blog_posts'
 
-      belongs_to :category, class_name: "Tag"
+      belongs_to :category
       has_many :taggings
       has_many :tags, through: :taggings
 
@@ -40,7 +40,8 @@ module Cardboard
       end
 
       def author_name
-        self.author.try(:name) || user_name || self.author.try(:email)
+        user_name
+        # self.author.try(:name) || user_name || self.author.try(:email)
       end
 
       def published?
@@ -64,6 +65,7 @@ module Cardboard
     private
 
       def set_defaults
+        self.user_name = self.author.try(:name) || self.author.try(:email)
         self.slug ||= title
         self.path = "/"
         self.meta_tags = meta_tags.reverse_merge("title" => title, "description" => summary)
