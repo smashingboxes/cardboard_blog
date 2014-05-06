@@ -24,5 +24,11 @@ class CreateCardboardBlogPosts < ActiveRecord::Migration
       t.belongs_to :tag, index: true
       t.belongs_to :post, index: true
     end
+
+    # Categories
+    create_table :cardboard_blog_categories do |t|
+      t.string :name
+      t.string :image_uid
+    end
   end
 end

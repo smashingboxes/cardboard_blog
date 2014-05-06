@@ -39,9 +39,9 @@ PATH
 PATH
   remote: /Users/michaelelfassy/Development/simple_dragonfly_preview
   specs:
-    simple_dragonfly_preview (0.0.3)
+    simple_dragonfly_preview (0.0.4)
       dragonfly (~> 1.0.0)
-      rails (~> 4.0.0)
+      rails (~> 4.0)
 
 GEM
   remote: http://rubygems.org/
