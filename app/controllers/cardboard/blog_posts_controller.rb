@@ -9,7 +9,7 @@ class Cardboard::BlogPostsController < Cardboard::ResourceController
   def create
     if params[:commit][/publish/i]
       @blog_post = Cardboard::Blog::Post.new(*resource_params)
-      @blog_post.published_at = DateTime.now
+      update_published_at
     end
     create!
   end
@@ -17,9 +17,18 @@ class Cardboard::BlogPostsController < Cardboard::ResourceController
   def update
     if params[:commit][/publish/i]
       @blog_post = Cardboard::Blog::Post.find(params[:id])
-      @blog_post.published_at = DateTime.now
+      update_published_at
     end
     update!
   end
 
+  private
+
+  def update_published_at
+    if params[:commit][/unpublish/i]
+      @blog_post.published_at = nil
+    else
+      @blog_post.published_at = DateTime.now
+    end
+  end
 end

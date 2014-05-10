@@ -8,7 +8,7 @@ module Cardboard
       has_many :tags, through: :taggings
 
       scope :draft, ->{where("published_at IS NULL")}
-      scope :published, ->{where("published_at IS NOT NULL")}
+      scope :published, ->{where("published_at IS NOT NULL").includes(:url_object).order('published_at DESC')}
 
       include UrlConcern
 

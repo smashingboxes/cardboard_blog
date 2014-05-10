@@ -9,7 +9,9 @@
 = f.association :category, collection: Cardboard::Blog::Tag.all
 = f.association :tags, input_html: {"data-search-select" => true, style: "width: 100%;"}
 
-= f.submit "Save", class: "btn"
+=> f.submit "Save", class: "btn"
 - if @blog_post.draft?
-  =< f.submit "Save and Publish", class: "btn btn-primary"
+  = f.submit "Save and Publish", class: "btn btn-primary"
+- else
+  = f.submit "UnPublish", class: "btn btn-danger"
   
