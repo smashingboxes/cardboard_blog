@@ -8,7 +8,7 @@ class CreateCardboardBlogPosts < ActiveRecord::Migration
       t.integer :visits, :default => 0
       t.datetime :published_at
       t.integer :user_id, index: true
-      t.integer :user_name
+      t.string :author_name
       t.integer :category_id, index: true
       t.string :image_uid
       t.timestamps

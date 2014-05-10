@@ -4,6 +4,7 @@ module Cardboard
       self.table_name = 'cardboard_blog_posts'
 
       belongs_to :category
+      belongs_to :author, class_name: Cardboard.application.user_class.constantize.to_s, foreign_key: "user_id"
       has_many :taggings
       has_many :tags, through: :taggings
 
@@ -34,15 +35,6 @@ module Cardboard
       end
 
       #overwritten setters/getters
-      def author
-        return nil unless user_id
-        Cardboard.application.user_class.constantize.find(self.user_id)
-      end
-
-      def author_name
-        user_name
-        # self.author.try(:name) || user_name || self.author.try(:email)
-      end
 
       def published?
         return false unless published_at
@@ -65,7 +57,7 @@ module Cardboard
     private
 
       def set_defaults
-        self.user_name = self.author.try(:name) || self.author.try(:email)
+        self.author_name = self.author.try(:name) || self.author.try(:email)
         self.slug ||= title
         self.path = "/"
         self.meta_tags = meta_tags.reverse_merge("title" => title, "description" => summary)
