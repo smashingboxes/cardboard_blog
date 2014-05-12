@@ -29,7 +29,7 @@ div style="margin-top: 10px;"
       p
         .right
           = link_to "Edit", edit_cardboard_blog_post_path(post), class: "btn"
-        =<> link_to post.title, main_app.blog_post_path(post)
+        =<> link_to post.title, post.url
         small
           - if post.draft?
             .label Draft 
